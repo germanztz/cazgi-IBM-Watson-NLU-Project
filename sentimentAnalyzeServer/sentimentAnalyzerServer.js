@@ -17,13 +17,15 @@ variables that you set up in the .env file*/
 
 // const api_key = process.env.API_KEY;
 // const api_url = process.env.API_URL;
-// API_KEY=OVgv7LSrDmPzQDvG7qYhD8X_4guwSaGh0JjuAqjTe-bn
-// API_URL=https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/7e5635a0-27d0-4701-a3bf-50fec1ebbb6c
+const api_key = 'OVgv7LSrDmPzQDvG7qYhD8X_4guwSaGh0JjuAqjTe-bn'
+const api_url = 'https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/7e5635a0-27d0-4701-a3bf-50fec1ebbb6c'
 
 function getNLUInstance() {
     /*Type the code to create the NLU instance and return it.
     You can refer to the image in the instructions document
     to do the same.*/
+    console.debug(api_key);
+    console.debug(api_url);
 
     const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
     const { IamAuthenticator } = require('ibm-watson/auth');
@@ -35,6 +37,7 @@ function getNLUInstance() {
         }),
         serviceUrl: api_url
     });
+
     return naturalLanguageUnderstanding;    
 }
 
