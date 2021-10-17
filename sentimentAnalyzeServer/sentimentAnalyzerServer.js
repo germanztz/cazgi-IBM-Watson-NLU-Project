@@ -17,6 +17,8 @@ variables that you set up in the .env file*/
 
 // const api_key = process.env.API_KEY;
 // const api_url = process.env.API_URL;
+// API_KEY=OVgv7LSrDmPzQDvG7qYhD8X_4guwSaGh0JjuAqjTe-bn
+// API_URL=https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/7e5635a0-27d0-4701-a3bf-50fec1ebbb6c
 
 function getNLUInstance() {
     /*Type the code to create the NLU instance and return it.
