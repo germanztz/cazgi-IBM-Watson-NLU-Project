@@ -12,20 +12,18 @@ app.use(cors_app());
 /*Uncomment the following lines to loan the environment 
 variables that you set up in the .env file*/
 
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 
-// const api_key = process.env.API_KEY;
-// const api_url = process.env.API_URL;
-const api_key = 'OVgv7LSrDmPzQDvG7qYhD8X_4guwSaGh0JjuAqjTe-bn'
-const api_url = 'https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/7e5635a0-27d0-4701-a3bf-50fec1ebbb6c'
+const api_key = process.env.API_KEY;
+const api_url = process.env.API_URL;
 
 function getNLUInstance() {
     /*Type the code to create the NLU instance and return it.
     You can refer to the image in the instructions document
     to do the same.*/
-    console.debug(api_key);
-    console.debug(api_url);
+    // console.debug(api_key);
+    // console.debug(api_url);
 
     const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
     const { IamAuthenticator } = require('ibm-watson/auth');
@@ -131,6 +129,7 @@ app.get("/text/emotion", (req,res) => {
 });
 
 app.get("/text/sentiment", (req,res) => {
+    console.debug("/text/sentiment")
     let textToAnalyze = req.query.text 
     const analyzeParams = 
     {
@@ -148,10 +147,11 @@ app.get("/text/sentiment", (req,res) => {
     naturalLanguageUnderstanding.analyze(analyzeParams)
     .then(analysisResults => {
         //Retrieve the sentiment and return it as a formatted string
-
+        console.debug(analysisResults)
         return res.send(analysisResults.result.keywords[0].sentiment,null,2);
     })
     .catch(err => {
+        console.error(err)
         return res.send("Could not do desired operation "+err);
     });
 });
